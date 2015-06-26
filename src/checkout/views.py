@@ -16,7 +16,7 @@ def checkout(request):
 		# Create the charge on Stripe's servers - this will charge the user's card
 		try:
 			customer = stripe.Customer.retrieve(customer_id)
-			customer.cards.create(card=token)
+			customer.sources.create(card=token)
   			charge = stripe.Charge.create(
       			amount=1000, # amount in cents, again
       			currency="usd",
